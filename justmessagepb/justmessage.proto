@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package justmessage;
+option go_package="justmessagepb";
+
+message JustMessage {
+    int32 id = 1;
+    string justmessage = 2;
+}
+
+message MessageRequest {
+    JustMessage yourmessage = 1;
+}
+
+message MessageResponse {
+    JustMessage result = 1;
+}
+
+message GetAllMessageRequest {
+}
+
+message GetAllMessagesResponse {
+    JustMessage result = 1;
+}
+
+message LongLiveMessageConnectionRequest {
+    JustMessage yourmessage = 1;
+}
+
+message LongLiveMessageConnectionResponse {
+    JustMessage result = 1;
+}
+
+service JustMessageService {
+    //Just like ordinary API (REST) Request Response only
+    rpc JustMessage(MessageRequest) returns (MessageResponse) {};
+    
+    //Get all Messages with Server streaming gRPC
+    rpc GetAllMessages(GetAllMessageRequest) returns (stream GetAllMessagesResponse) {};
+
+    //Stream long live connection
+    rpc GetCommunicationMessages(stream LongLiveMessageConnectionRequest) returns (stream LongLiveMessageConnectionResponse) {};
+}
