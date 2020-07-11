@@ -10,6 +10,6 @@ Run on client.go code what task you want to run, comment the rest, do like this:
 - Notes: Task 3 can't run independently, because the API need request message
 
 To run client and server, just:
-    1. Please ```dep ensure``` first
-    1. on client filepath, type ```go run client.go```
-    2. on server filepath, type ```go run server.go```
+   - Please ```dep ensure``` first
+   - on client filepath, type ```go run client.go```
+   - on server filepath, type ```go run server.go```
